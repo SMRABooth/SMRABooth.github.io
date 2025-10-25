@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html>
+
+
+
+
+
+<head>
+
+  <!-- <link href="css/two_style.css" rel="stylesheet" /> -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DreamRelation">
+  <meta property="og:title" content="DreamRelation" />
+  <meta property="og:description"
+    content="DreamRelation: Relation-Centric Video Customization" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/video_t1.png" />
+  <meta property="og:image:width" content="2412" />
+  <meta property="og:image:height" content="1394" />
+
+
+
+  <title>STRABooth</title>
+  <link rel="icon" href="static/images/logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</head>
+
+<body>
+
+  <section class="hero banner" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <i class="pixart-alpha-icon"></i>
+                    <h1 class="title is-1 publication-title" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+                        <span>
+                            <span style="color: #B771E5; font-weight: bold; font-size: 52px;">STRABooth:</span>
+                            <span style="color: white; font-weight: bold; font-size: 48px;">Spatial-Temporal Representation Alignment</span><br>
+                            <span style="color: white; font-weight: bold; font-size: 48px;">for Customized Video Generation</span>
+                        </span>
+                    </h1>
+                    <!--div class="is-size-5 publication-authors" style="text-align: center;">
+                        <span class="author-block"></span>
+                        <a href="https://weilllllls.github.io" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Yujie Wei</a><sup>1</sup>,&thinsp;
+                        <span class="author-block">
+                            <a href="https://scholar.google.com.hk/citations?user=ZO3OQ-8AAAAJ" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Shiwei Zhang</a><sup>2* </sup>,&thinsp;
+                        </span>
+                        <span class="author-block">
+                            <a href="https://jacobyuan7.github.io" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Hangjie Yuan</a><sup>2</sup>,&thinsp;
+                        </span>
+                        <span class="author-block">
+                          <a href="https://scholar.google.com/citations?user=BwdpTiQAAAAJ" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Biao Gong</a><sup>3</sup>, &thinsp;
+                        </span>
+                        <span class="author-block">
+                          <a href="https://scholar.google.com/citations?user=3oMQsq8AAAAJ" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Longxiang Tang</a><sup>2</sup>, &thinsp;
+                        </span>
+                        <span class="author-block">
+                            <a href="https://scholar.google.com/citations?user=cQbXvkcAAAAJ" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Xiang Wang</a><sup>2</sup>, &thinsp;
+                        </span>
+                        <br>
+                        <span class="author-block">
+                            <a href="http://haonanqiu.com" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Haonan Qiu</a><sup>4</sup>,&thinsp;
+                        </span>
+                        <span class="author-block">
+                            <a href="https://echopluto.github.io/HomePage/" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Hengjia Li</a><sup>5</sup>,&thinsp;
+                        </span>
+                        <span class="author-block">
+                            <a href="" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Shuai Tan</a><sup>3</sup>,&thinsp;
+                        </span>
+                        <span class="author-block">
+                            <a href="https://scholar.google.com.sg/citations?user=16RDSEUAAAAJ" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Yingya Zhang</a><sup>2</sup>&thinsp;
+                        </span>
+                        <span class="author-block">
+                            <a href="http://hmshan.io" target="_blank" style="color: rgb(170,170,170) !important; text-decoration: underline;">Hongming Shan</a><sup>1†</sup>&thinsp;
+                        </span>
+                    </div>
+                    <div class="is-size-5 publication-authors" style="text-align: center;">
+                        <span class="author-block"><sup>1</sup>Fudan University&thinsp; &thinsp;</span>
+                        <span class="author-block"><sup>2</sup>Alibaba Group&thinsp; &thinsp;</span>
+                        <span class="author-block"><sup>3</sup>Ant Group&thinsp; &thinsp;</span>
+                        <br>
+                        <span class="author-block"><sup>4</sup>Nanyang Technological University&thinsp; &thinsp;</span>
+                        <span class="author-block"><sup>5</sup>Zhejiang University&thinsp; &thinsp;</span>
+                        <span class="eql-cntrb"><small><br><sup>*</sup>Project Leader&thinsp; &thinsp;</small></span>
+                        <span class="eql-cntrb"><small><sup>†</sup>Corresponding Author</small></span>
+                    </div-->
+                  
+                    <div class="is-size-5 publication-authors" style="text-align: center;">
+                      <span class="author-block">Anonymous Authors</span>
+                    </div>
+
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-white">
+                                    <span class="icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </span>
+                                    <span>Paper</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-white">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+
+
+  <!-- Teaser video-->
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <!-- <div class="hero-body"> -->
+        <!-- <video poster="" id="tree" autoplay controls muted loop height="100%"> -->
+        <!-- Your video here -->
+        <!-- <source src="static/images/teaser.png"
+        type="video/mp4">
+      </video> -->
+      <br>
+        <img src="static/images/introduction.png"
+          alt="MY ALT TEXT" />
+        </h2>
+      </div>
+      <!-- </div> -->
+    </div>
+  </section>
+  <!-- End teaser video -->
+
+  <!-- Teaser video-->
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <!-- <div class="hero-body"> -->
+        <video poster="" id="tree" controls muted loop height="100%">
+          <source src="static/mp4/overview.mp4"
+            type="video/mp4">
+        </video>
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End teaser video -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop is-centered has-text-centered">
+        <!-- <div class="columns is-centered has-text-centered"> -->
+        <!-- <div class="column is-four-fifths"> -->
+        <h2 class="title is-3">Abstract</h2>
+        <!-- <h2 class="title is-3">Abstract</h2> -->
+        <div class="content has-text-justified">
+          <p>
+            Customized video generation aims to produce videos that faithfully preserve the subject's appearance from reference images 
+            while maintaining temporally consistent motion from reference videos. Existing methods focus on preserving local information 
+            for spatial and motion features but lack the capability to effectively capture and control global subject identity and 
+            coherent motion patterns. To address this, we propose \(\textbf{STRABooth}\), a novel framework that pioneers global 
+            representation alignment with stage-by-stage customization for DiT-based architectures. Our approach is structured in 
+            three core stages: (1) <b>Global Spatial Control</b>: We leverage global representations from reference images via a 
+            self-supervised vision encoder to guide spatial representation alignment, enabling the model to capture the subject's 
+            global structure and improve high-level semantic consistency beyond local details. (2) <b>Global Temporal Control</b>: 
+            We utilize global temporal representations of optical flow from reference videos to capture structurally coherent and 
+            object-level motion trajectories independent of appearance. (3) <b>Decoupling Integration</b>: We propose a spatial-temporal 
+            association decoupling strategy that applies sparse LoRAs injection across both locations and timing, effectively reducing 
+            interference between spatial and temporal LoRAs. Extensive experiments show that STRABooth excels in subject and motion 
+            customization, maintaining consistent subject appearance and motion patterns, proving its effectiveness in controllable 
+            text-to-video generation.
+          </p>
+        </div>
+        <!-- </div> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+
+
+
+
+  <!-- <section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Demo Video</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <video poster="" id="tree" autoplay controls muted loop height="100%">
+            <source src=""
+            type="video/mp4">
+          </video> 
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+  <!-- End youtube video -->
+
+
+  <!-- Image carousel -->
+  <section class="hero is-small">
+    <!-- <section class="hero is-light"> -->
+    <div class="hero-body">
+      <div class="container is-max-desktop is-centered has-text-centered">
+        <h2 class="title is-3">Overall Framework of STRABooth</h2>
+        <div class="item">
+          <!-- Your image here -->
+          <img src="static/images/pipeline.png"
+            alt="STRABooth Framework" />
+          <h2 class="content has-text-justified">
+            Overview of STRABooth. Our method splits customized video generation into two stages: subject learning and motion learning. Subject learning aligns global spatial features from the vision encoder to enhance fidelity, while motion learning utilizes temporal motion representations from the optical flow encoder to guide motion generation. The pretrained video diffusion model remains frozen during training, and LoRAs are merged at inference to generate customized videos. For simplicity, text input is omitted from the figure.
+          </h2>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+  <!-- End image carousel -->
+
+  <!-- Video carousel -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container is-centered has-text-centered">
+        <h2 class="title is-3">Customized Video Generation with Both Subject and Motion</h2>
+        <h2 class="title is-3" style="color: #1E90FF;">DiT-based methods</h2>
+        <p class="subtitle is-5">You can generate videos flexibly with any subject and any motion.</p>
+        <p class="subtitle is-6" style="color: red; font-weight: bold;">All the generated videos are the resolution of 832 × 480.</p>
+        <h3 class="title is-4" style="margin-top: 2rem;">Comparisons with baselines</h3>
+        <div id="results-carousel11" class="carousel results-carousel">
+          
+          <!-- Page 1: dog + riding bike -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/DiTpages/page1/dog1_501.jpg" alt="dog" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"dog"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 350px;">
+                  <source src="assets/DiTpages/page1/riding_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a person is riding a bike"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page1/video1_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1+LoRAs</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page1/video2_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>DualReal</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page1/video3_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020; margin-bottom: 0.5rem;"><b>STRABooth (Ours)</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page1/video4_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"A dog is riding a bike around marble columns, with smooth stone floors echoing the sound of its wheels."</p>
+          </div>
+
+          <!-- Page 2: orange Porsche car + traveling -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/DiTpages/page2/car1.jpg" alt="orange Porsche car" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"orange Porsche car"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 350px;">
+                  <source src="assets/DiTpages/page2/traveling_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a boat is traveling"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page2/video1_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1+LoRAs</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page2/video2_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>DualReal</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page2/video3_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020; margin-bottom: 0.5rem;"><b>STRABooth (Ours)</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page2/video4_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"An orange Porsche car is traveling along a wide highway on the Moon, with gray lunar dust rising behind, distant craters surrounding the road, and the Earth shining brightly in the dark sky"</p>
+          </div>
+
+          <!-- Page 3: plushie panda + running -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/DiTpages/page3/panda3.png" alt="plushie panda" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"plushie panda"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 350px;">
+                  <source src="assets/DiTpages/page3/running_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a bus is running"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page3/video1_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1+LoRAs</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page3/video2_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>DualReal</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page3/video3_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020; margin-bottom: 0.5rem;"><b>STRABooth (Ours)</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page3/video4_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"A plushie panda is running through a bamboo forest, with tall green stalks rising overhead, patches of fallen leaves on the ground."</p>
+          </div>
+
+          <!-- Page 4: cat + running -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/DiTpages/page4/cat4_501.jpg" alt="cat" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"cat"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 350px;">
+                  <source src="assets/DiTpages/page4/running_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a car is running"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page4/video1_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1+LoRAs</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page4/video2_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>DualReal</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page4/video3_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020; margin-bottom: 0.5rem;"><b>STRABooth (Ours)</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page4/video4_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"A cat is running along a garden path, surrounded by colorful flower beds, neatly trimmed hedges, and soft sunlight filtering through the trees."</p>
+          </div>
+
+          <!-- Page 5: terracotta warrior + lifting weights -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/DiTpages/page5/terra_501.jpg" alt="terracotta warrior" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"terracotta warrior"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 350px;">
+                  <source src="assets/DiTpages/page5/lifting_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a person is lifting weights"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page5/video1_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1+LoRAs</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page5/video2_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>DualReal</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page5/video3_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020; margin-bottom: 0.5rem;"><b>STRABooth (Ours)</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page5/video4_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"A terracotta warrior is lifting weights in an ancient courtyard, with red lanterns hanging from the eaves, intricate stone carvings on the walls."</p>
+          </div>
+
+          <!-- Page 6: cat + flute -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/DiTpages/page6/cat6_501.jpg" alt="cat" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"cat"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 350px;">
+                  <source src="assets/DiTpages/page6/flute_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a woman is playing flute"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page6/video1_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1+LoRAs</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page6/video2_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>DualReal</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page6/video3_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020; margin-bottom: 0.5rem;"><b>STRABooth (Ours)</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page6/video4_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"A cat is playing the flute under a sprawling oak tree, with golden autumn leaves scattered across the ground."</p>
+          </div>
+
+          <!-- Page 7: dog + skateboarding -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/DiTpages/page7/dog7_501.jpg" alt="dog" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"dog"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 350px;">
+                  <source src="assets/DiTpages/page7/skateboarding_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a boy is skateboarding"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page7/video1_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1+LoRAs</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page7/video2_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>DualReal</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page7/video3_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020; margin-bottom: 0.5rem;"><b>STRABooth (Ours)</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page7/video4_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"A dog is skateboarding through an open-air market, dodging fruit stands and weaving between busy shoppers."</p>
+          </div>
+
+          <!-- Page 8: terracotta warrior + basketball -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/DiTpages/page8/terra8_501.jpg" alt="terracotta warrior" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"terracotta warrior"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 350px;">
+                  <source src="assets/DiTpages/page8/dribbing_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a person is dribbing a basketball"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page8/video1_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>WAN2.1+LoRAs</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page8/video2_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison and Results - Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem;"><b>DualReal</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page8/video3_re.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020; margin-bottom: 0.5rem;"><b>STRABooth (Ours)</b></p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTpages/page8/video4_re.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"A terracotta warrior is dribbling a basketball on a riverside promenade, with flat paving blocks and willow shadows on the path."</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End video carousel -->
+
+  <!-- More DiT Results Section -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container is-centered has-text-centered">
+        <h2 class="title is-3">More DiT-based Results</h2>
+        <div id="results-carousel-more" class="carousel results-carousel">
+          
+          <!-- Page 1: Skateboarding -->
+          <div class="item">
+            <h3 class="title is-4" style="margin-bottom: 2rem;">Skateboarding in Different Scenarios</h3>
+            
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A cat is skateboarding on a rainy sidewalk, with puddles splashing as it glides and colorful umbrellas in the background."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page1/pet_cat7_8820377.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A plushie panda is skateboarding on a peaceful mountain trail, with cherry blossoms in full bloom and a wooden temple in the distance."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page1/plushie_panda_7675675.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A plushie teddy bear is skateboarding through a cozy kitchen, jumping over spilled flour and gliding past stacks of cookies on the counter."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page1/plushie_teddybear_4873839.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A terracotta warrior is skateboarding through a bustling ancient marketplace, dodging merchants and carts loaded with goods."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page1/terracotta_warrior_5121452.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 2: Playing Piano -->
+          <div class="item">
+            <h3 class="title is-4" style="margin-bottom: 2rem;">Playing Piano in Different Settings</h3>
+            
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A cat is playing piano on a cozy windowsill, with soft sunlight streaming through the glass and potted plants gently swaying in the breeze."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page2/cat2_6449812.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A dog is playing piano in a bustling city square, with people walking by, tall skyscrapers in the background, and streetlights glowing as twilight sets in."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page2/dog7_5701794.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A dog is playing piano in a quiet park under a canopy of cherry blossoms, with petals gently falling and a wooden bench nearby."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page2/dog8_9083813.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A cat is playing piano on a rocky cliff near the ocean, with waves crashing below and seagulls soaring in the clear blue sky."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page2/pet_cat1_7134445.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 3: Riding Bike -->
+          <div class="item">
+            <h3 class="title is-4" style="margin-bottom: 2rem;">Riding Bike in Various Environments</h3>
+            
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A plushie bear is riding a bike across a city square at dusk, with fountains spraying lightly and shop lights flickering on."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page3/bear_plushie_2736336.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A dog is riding a bike along a sandy beach track, with waves rolling nearby and gulls circling in the distance."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page3/dog2_291940.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A toy duck is riding a bike on a wooden pier, with fishing nets piled nearby and calm harbor water stretching outward."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page3/duck_toy_450482.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A plushie sloth is riding a bike on a snowy path, with footprints trailing behind and pale aurora colors above."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page3/sloth_plushie_2763943.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 4: Running -->
+          <div class="item">
+            <h3 class="title is-4" style="margin-bottom: 2rem;">Running in Different Scenes</h3>
+            
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A cat is running along a garden path, with trimmed hedges on both sides and small stones scattered underfoot."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page4/cat2_5720318.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A plushie sloth is running on a snowy lane, with frosty branches overhead and smoke rising from chimneys nearby."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page4/sloth_plushie_8499805.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"An orange Porsche car is running along a coastal highway curve, with cliffs dropping steeply and waves crashing below."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page4/9a650251af0ef741a7474f64e99c2542.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">"A white Lamborghini car is running through a neon-filled avenue, with reflections scattered across rain-wet streets."</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/DiTmorecases/page4/transport_car7_526522.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End More DiT Results -->
+
+  <!-- U-Net Based Methods Section -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-centered has-text-centered">
+        <h2 class="title is-3">Customized Video Generation with Both Subject and Motion</h2>
+        <h2 class="title is-3" style="color: #1E90FF;">UNet-based methods</h2>
+        <p class="subtitle is-5">You can generate videos flexibly with any subject and any motion.</p>
+        <p class="subtitle is-6" style="color: red; font-weight: bold;">All the generated videos are the resolution of 384 × 384.</p>
+        
+        <h3 class="title is-4" style="margin-top: 2rem;">Comparisons with baselines</h3>
+        <div id="results-carousel-unet" class="carousel results-carousel">
+          
+          <!-- Page 1: toy bear + playing golf -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/images/subjects/toy_bear/00.jpg" alt="toy bear" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"toy bear"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 200px;">
+                  <source src="assets/mp4/motion/playing_golf/multivideo1.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a person is playing golf"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison -->
+            <div class="columns is-centered">
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6"><b>DreamVideo</b></p>
+              </div>
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6"><b>MotionBooth</b></p>
+              </div>
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6"><b>MotionDirector</b></p>
+              </div>
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020;"><b>STRABooth<br>(based on ZeroScope)</b></p>
+              </div>
+            </div>
+            
+            <!-- Results Videos -->
+            <div class="columns is-centered">
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subjct_motion/dreamvideo.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subjct_motion/motionbooth.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subjct_motion/motiondirector.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subjct_motion/strabooth.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"a toy bear is playing golf"</p>
+          </div>
+
+          <!-- Page 2: car + running -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/images/subjects/transport_car/00.jpg" alt="car" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"car"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 200px;">
+                  <source src="assets/mp4/motion/driving/car_turn.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a car is running"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison -->
+            <div class="columns is-centered">
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6"><b>DreamVideo</b></p>
+              </div>
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6"><b>MotionBooth</b></p>
+              </div>
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6"><b>MotionDirector</b></p>
+              </div>
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020;"><b>STRABooth<br>(based on ZeroScope)</b></p>
+              </div>
+            </div>
+            
+            <!-- Results Videos -->
+            <div class="columns is-centered">
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subjct_motion_p2/dreamvideo.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subjct_motion_p2/motionbooth.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subjct_motion_p2/motiondirector.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subjct_motion_p2/strabooth.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"a car is driving on the snow road"</p>
+          </div>
+
+          <!-- Page 3: plushie wolf + running -->
+          <div class="item">
+            <!-- Input Section -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-3 has-text-centered">
+                <figure class="image" style="margin: 0 auto; max-width: 200px;">
+                  <img src="assets/images/subjects/wolf_pushie/00.jpg" alt="plushie wolf" style="border-radius: 10px;">
+                </figure>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"plushie wolf"</p>
+              </div>
+              <div class="column is-1 has-text-centered" style="display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 2rem; font-weight: bold;">+</span>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 200px;">
+                  <source src="assets/mp4/motion/dirt_running/dirt-road-driving.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a car is running"</p>
+              </div>
+            </div>
+            
+            <!-- Methods Comparison -->
+            <div class="columns is-centered">
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6"><b>DreamVideo</b></p>
+              </div>
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6"><b>MotionBooth</b></p>
+              </div>
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6"><b>MotionDirector</b></p>
+              </div>
+              <div class="column is-2 has-text-centered">
+                <p class="subtitle is-6" style="color: #E52020;"><b>STRABooth<br>(based on ZeroScope)</b></p>
+              </div>
+            </div>
+            
+            <!-- Results Videos -->
+            <div class="columns is-centered">
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subject_motion_p3/dreamvideo.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subject_motion_p3/motionbooth.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subject_motion_p3/motiondirector.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-2">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/results/subject_motion_p3/strabooth.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">"a plushie wolf is running in the forest"</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End U-Net Based Methods -->
+
+  <!-- More Results Section (U-Net based) -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-centered has-text-centered">
+        <h2 class="title is-3">More Results (U-Net-based methods)</h2>
+        <p class="subtitle is-5">More diverse video generation results with different subjects and motions.</p>
+        <div id="results-carousel-more-unet" class="carousel results-carousel">
+          
+          <!-- Page 1 -->
+          <div class="item">
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a toy duck is swimming on the water"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/more_results/subject_motion/p1/a_sks_toy_duck_vvt_swimming_on_water_5549964.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a toy robot is playing guitar in the room"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/more_results/subject_motion/p1/a_sks_toy_robot_vvt_playing_a_guitar_in_the_room_1017443.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a toy robot is playing golf in a garden"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/more_results/subject_motion/p1/a_sks_toy_robot_vvt_playing_golf_in_a_garden_373034.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a toy car is running on the snowy road"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/more_results/subject_motion/p1/a_toy_sks_car_is_vvt_running_on_the_snowy_road_3157152.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 2 -->
+          <div class="item">
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a dog is riding a bike on the beach"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/more_results/subject_motion/p2/a_sks_dog_vvt_riding_a_bike_on_a_beach_6382891.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a happysad is playing guitar in the room"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/more_results/subject_motion/p2/a_sks_plushie_happysad_vvt_playing_a_guitar_in_the_room_6475781.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a plushie panda is rolling in the forest"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/more_results/subject_motion/p2/a_sks_plushie_panda_vvt_rolling_in_a_forest_6672810.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a plushie wolf is playing guitar in the room"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/more_results/subject_motion/p2/a_sks_plushie_wolf_vvt_playing_a_guitar_in_the_room_9527410.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 3 -->
+          <div class="item">
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a cat is playing piano in the room"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/Ablation Study/both/a_sks_cat_vvt_playing_piano_in_the_room_5992393.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a dog is playing piano on a beach"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/Ablation Study/both/a_sks_dog_vvt_playing_piano_on_a_beach_4307555.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a plushie teddybear is playing piano in the room"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/Ablation Study/both/a_sks_plushie_teddybear_vvt_playing_piano_in_the_room_1433934.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a toy bear is playing piano in the room"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/Ablation Study/both/a_sks_toy_bear_vvt_playing_piano_in_the_room_8526198.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 4 -->
+          <div class="item">
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a dog is lifting weights in a park"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/Ablation Study/both/a_sks_dog_vvt_lifting_weights_in_a_park_3687545.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a dog is lifting weights on the grass"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/Ablation Study/both/a_sks_dog_vvt_lifting_weights_on_the_grass_9021068.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a plushie panda is lifting weights in a park"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/Ablation Study/both/a_sks_plushie_panda_vvt_lifting_weights_in_a_park_3710127.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-3 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 48px;">"a toy bear is lifting weights in a garden"</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/mp4/Ablation Study/both/a_sks_toy_bear_vvt_lifting_weights_in_a_garden_7623440.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End More Results (U-Net based) -->
+
+  <!-- Subject Customization Section -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-centered has-text-centered">
+        <h2 class="title is-3">Subject Customization</h2>
+        <p class="subtitle is-5">You can generate videos flexibly with only subject control.</p>
+        <p class="subtitle is-6" style="color: red; font-weight: bold;">All the generated videos are the resolution of 832 × 480.</p>
+        
+        <div id="results-carousel-subject" class="carousel results-carousel">
+          
+          <!-- Page 1 -->
+          <div class="item">
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A plushie bear is dancing joyfully in the middle of Times Square at night, surrounded by massive glowing billboards, flashing advertisements, vibrant city lights reflecting on the wet pavement, and a lively crowd capturing the moment with excitement.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page1/bear_plushie.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A cat is running swiftly on the surface of the moon, leaving tiny paw prints in the silver dust under the vast starry sky, with Earth glowing brightly in the distance and the barren lunar landscape stretching endlessly around.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page1/cat2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A dog is walking calmly under the glowing aurora in the night sky, with shimmering green and purple lights dancing above, snow-covered ground reflecting the colors, and a serene silence surrounding the scene.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page1/dog.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A dog is running playfully along the beach, with waves splashing near its paws, golden sand flying behind, and the sunset painting the horizon in warm colors.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page1/dog2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 2 -->
+          <div class="item">
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A dog is swimming energetically in a clear blue lake, creating splashes in the water, with reflections of the sky and surrounding trees shimmering on the surface.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page2/dog5.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A dog is walking slowly in a supermarket, surrounded by tall shelves filled with colorful products, bright fluorescent lights overhead, and neatly arranged aisles stretching into the distance.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page2/dog7.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A cat is running in the park, with soft grass under its paws, colorful flowers around, tall trees casting shadows, and warm sunlight streaming through the leaves.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page2/pet_cat1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A dog is running under the stars, with the night sky full of constellations, a gentle breeze brushing its fur, and the quiet city lights glowing faintly below.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page2/pet_dog1.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 3 -->
+          <div class="item">
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A plushie panda is running on the Great Wall of China, with the ancient stone bricks beneath it, winding walls stretching over green mountains, and the horizon glowing under the sun.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page3/plushie_panda.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A cartoon demon is running across a volcanic landscape, with streams of lava glowing red and dark smoke rising into the sky.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page3/red_cartoon.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A terracotta_warrior is rowing a boat on a calm river, with willows hanging low and reflections shimmering on the water.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page3/terracotta_warrior.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A man is riding a motorbike along a coastal cliff road, with ocean waves crashing far below and the horizon glowing in the sunset.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page3/transport_motorbike1.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 4 -->
+          <div class="item">
+            <!-- Row 1 -->
+            <div class="columns is-centered" style="margin-bottom: 1rem;">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A plushie happysad is swimming around the vibrant coral reef, its soft, colorful body surrounded by swaying seaweed, bright corals, and curious fish gliding by.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page4/plushie_happysad.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A plushie tortoise is swimming around the vibrant coral reef, its soft, colorful body surrounded by swaying seaweed, bright corals, and curious fish gliding by.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page4/plushie_tortoise.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="columns is-centered">
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A orange Porsche car is speeding down a coastal highway, with ocean waves crashing against the cliffs and the sunset glowing on the horizon.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page4/transport_car6.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 96px;">A white Lamborghini car is running under the neon lights of a bustling city, with skyscrapers towering overhead and colorful reflections glowing on the wet street.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/subject_cus/page4/transport_car7.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Subject Customization -->
+
+  <!-- Motion Customization Section -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-centered has-text-centered">
+        <h2 class="title is-3">Motion Customization</h2>
+        <p class="subtitle is-5">You can generate videos flexibly with only motion control.</p>
+        <p class="subtitle is-6" style="color: red; font-weight: bold;">All the generated videos are the resolution of 832 × 480.</p>
+        
+        <div id="results-carousel-motion" class="carousel results-carousel">
+          
+          <!-- Page 1: basketball -->
+          <div class="item">
+            <!-- Reference video -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-6 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 600px;">
+                  <source src="assets/moiton_cus/page1/basketball1_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a person is playing basketball"</p>
+              </div>
+            </div>
+            
+            <!-- Generated videos -->
+            <div class="columns is-centered">
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A sleek alien with glowing purple skin and bioluminescent patterns is dribbling a bright green basketball in the middle of a mystical jungle, surrounded by oversized glowing plants and floating spores emitting soft light.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page1/case1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A humanoid robot with a sleek metallic body is dribbling basketball on a futuristic court,surrounded by holographic audience displays and neon-lit surroundings.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page1/case2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 2: car running -->
+          <div class="item">
+            <!-- Reference video -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-6 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 600px;">
+                  <source src="assets/moiton_cus/page2/car_turn2_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a car is running"</p>
+              </div>
+            </div>
+            
+            <!-- Generated videos -->
+            <div class="columns is-centered">
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A cyberpunk motorcycle with glowing neon accents is running through a rainy,high-tech cityscape,its lights reflecting on the wet pavement as holographic billboards illuminate the towering skyscrapers.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page2/case1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A heavily armored tank with wide tracks is running across a vast desert,its wide tracks kicking up clouds of sand,with majestic pyramids visible in the background under a bright, sunny sky.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page2/case2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 3: bus traveling -->
+          <div class="item">
+            <!-- Reference video -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-6 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 600px;">
+                  <source src="assets/moiton_cus/page3/bus_travelling3_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a bus is traveling"</p>
+              </div>
+            </div>
+            
+            <!-- Generated videos -->
+            <div class="columns is-centered">
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A futuristic hover train with smooth,sleek designs is traveling acrossa sprawling desert canyon,with towering red cliffs and a deep blue sky stretching endlessly above.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page3/case1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">The wooden boat with a small cabin is traveling across the lake, leaving gentle ripples behind as seagulls fly over head and the surrounding mountains reflect clearly on the calm water.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page3/case2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 4: playing piano -->
+          <div class="item">
+            <!-- Reference video -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-6 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 600px;">
+                  <source src="assets/moiton_cus/page4/piano4_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a girl is playing the piano"</p>
+              </div>
+            </div>
+            
+            <!-- Generated videos -->
+            <div class="columns is-centered">
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A woman is playing the piano under a cherry blossom tree at night,with petals falling softly and a full moon casting a serene glow over the scene.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page4/case1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A monk is playing the piano in a quiet temple hall, with candles flickering softly and ancient murals on the walls.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page4/case2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 5: car running (moon) -->
+          <div class="item">
+            <!-- Reference video -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-6 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 600px;">
+                  <source src="assets/moiton_cus/page5/car_round5_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a car is running"</p>
+              </div>
+            </div>
+            
+            <!-- Generated videos -->
+            <div class="columns is-centered">
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A rugged Mars rover with robotic arms and thick treads is maneuvering across the jagged surface of an alien planet, with strange rock formations and a binary star system glowing in the sky.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page5/case1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A heavily armored tank with wide tracks and long cannon is running across the moon rugged, dusty surface, kicking up lunar dust as Earth glows vividly in the dark, star-filled sky.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page5/case2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 6: playing flute -->
+          <div class="item">
+            <!-- Reference video -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-6 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 600px;">
+                  <source src="assets/moiton_cus/page6/flute6_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a girl is playing the flute"</p>
+              </div>
+            </div>
+            
+            <!-- Generated videos -->
+            <div class="columns is-centered">
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A wizard in a flowing purple robe is playing the flute at the peak of a snowy mountain, surrounded by swirling clouds and lightning crackling in the distance.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page6/case1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A street musician in casual clothes is playing the flute in a busy city square, with people walking by and towering skyscrapers in the background.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page6/case2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 7: lifting weights -->
+          <div class="item">
+            <!-- Reference video -->
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
+              <div class="column is-6 has-text-centered">
+                <video muted autoplay loop style="border-radius: 10px; width: 100%; max-width: 600px;">
+                  <source src="assets/moiton_cus/page7/lifting7_re.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6" style="margin-top: 0.5rem;">"a man is lifting weights"</p>
+              </div>
+            </div>
+            
+            <!-- Generated videos -->
+            <div class="columns is-centered">
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A robot is lifting weights in a futuristic gym, with glowing panels on the walls and advanced machines humming nearby.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page7/case1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-5 has-text-centered">
+                <p class="subtitle is-6" style="margin-bottom: 0.5rem; min-height: 72px;">A soldier is lifting weights on a military base, with tents and vehicles in the background under a clear sky.</p>
+                <video muted autoplay loop style="border-radius: 10px; width: 100%;">
+                  <source src="assets/moiton_cus/page7/case2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Motion Customization -->
+
+  <!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Reference</h2>
+      <pre>
+      <code>
+        
+</code>
+</pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8 text-center">
+          <div class="content text-center">
+
+            <!--p>
+              The source code of this webpage is borrowed from the <a href="https://nerfies.github.io"
+                target="_blank">Nerfies</a>  project webpage.
+            </p-->
+            <!--p class="has-text-centered">Total clicks: <span id="busuanzi_value_site_pv"></span></p-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    bulmaCarousel.attach('#results-carousel21', {
+      slidesToScroll: 1,
+      slidesToShow: 2,
+      infinite: true,
+      autoplay: true,
+      pauseOnHover: true,
+      autoplaySpeed: 6000,
+    });
+    bulmaCarousel.attach('#results-carousel11', {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      infinite: true,
+      autoplay: true,
+      pagination: true,
+      pauseOnHover: true,
+      autoplaySpeed: 6000,
+    });
+    bulmaCarousel.attach('#results-carousel-more', {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      infinite: true,
+      autoplay: true,
+      pagination: true,
+      pauseOnHover: true,
+      autoplaySpeed: 6000,
+    });
+    bulmaCarousel.attach('#results-carousel-unet', {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      infinite: true,
+      autoplay: true,
+      pagination: true,
+      pauseOnHover: true,
+      autoplaySpeed: 6000,
+    });
+    bulmaCarousel.attach('#results-carousel-more-unet', {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      infinite: true,
+      autoplay: true,
+      pagination: true,
+      pauseOnHover: true,
+      autoplaySpeed: 6000,
+    });
+    bulmaCarousel.attach('#results-carousel-subject', {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      infinite: true,
+      autoplay: true,
+      pagination: true,
+      pauseOnHover: true,
+      autoplaySpeed: 6000,
+    });
+    bulmaCarousel.attach('#results-carousel-motion', {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      infinite: true,
+      autoplay: true,
+      pagination: true,
+      pauseOnHover: true,
+      autoplaySpeed: 6000,
+    });
+  </script>
+
+  <!-- Statcounter tracking code -->
+
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
