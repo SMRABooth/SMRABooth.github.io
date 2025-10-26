@@ -1,2 +1,1 @@
-# DreamRelation: Relation-Centric Video Customization
-https://dreamrelation.github.io
+# STRABooth: Spatial-Temporal Representation Alignment for Customized Video Generation
