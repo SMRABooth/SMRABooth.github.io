@@ -187,20 +187,7 @@
         <!-- <h2 class="title is-3">Abstract</h2> -->
         <div class="content has-text-justified">
           <p>
-            Customized video generation aims to produce videos that faithfully preserve the subject's appearance from reference images 
-            while maintaining temporally consistent motion from reference videos. Existing methods focus on preserving local information 
-            for spatial and motion features but lack the capability to effectively capture and control global subject identity and 
-            coherent motion patterns. To address this, we propose \(\textbf{SMRABooth}\), a novel framework that pioneers global 
-            representation alignment with stage-by-stage customization for DiT-based architectures. Our approach is structured in 
-            three core stages: (1) <b>Global Spatial Control</b>: We leverage global representations from reference images via a 
-            self-supervised vision encoder to guide spatial representation alignment, enabling the model to capture the subject's 
-            global structure and improve high-level semantic consistency beyond local details. (2) <b>Global Temporal Control</b>: 
-            We utilize global temporal representations of optical flow from reference videos to capture structurally coherent and 
-            object-level motion trajectories independent of appearance. (3) <b>Decoupling Integration</b>: We propose a spatial-temporal 
-            association decoupling strategy that applies sparse LoRAs injection across both locations and timing, effectively reducing 
-            interference between spatial and temporal LoRAs. Extensive experiments show that SMRABooth excels in subject and motion 
-            customization, maintaining consistent subject appearance and motion patterns, proving its effectiveness in controllable 
-            text-to-video generation.
+            Customized video generation aims to produce videos that faithfully preserve the subject's appearance from reference images while maintaining temporally consistent motion from reference videos. Existing methods still struggle to ensure both subject appearance similarity and motion pattern consistency. To address this, we propose SMRABooth, which leverages the DINO encoder and optical flow encoder to provide object-level subject appearance and motion representations. These representations are aligned with the model during the LoRA fine-tuning process. Our approach is structured in three core stages: Firstly, we exploit spatial representations extracted from reference images with a self-supervised vision encoder to guide spatial alignment, enabling the model to capture the subject’s overall structure and to improve high-level semantic consistency. Secondly, we utilize temporal representations of optical flow from reference videos to capture structurally coherent and object-level motion trajectories independent of appearance. Moreover, we propose a subject-motion association decoupling strategy that applies sparse LoRAs injection across both locations and timing, effectively reducing interference between subject and motion LoRAs. Extensive experiments show that SMRABooth excels in subject and motion customization, maintaining consistent subject appearance and motion patterns, proving its effectiveness in controllable text-to-video generation. 
           </p>
         </div>
         <!-- </div> -->
